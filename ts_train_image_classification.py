@@ -25,6 +25,7 @@ except ImportError:
 
 import ModelLoader, DataLoader
 import global_utils
+import wandb
 
 def ts_feature_map_loss(x,y):
     return torch.nn.functional.smooth_l1_loss(x, y)
@@ -789,6 +790,9 @@ def train_all_epochs(opt, model, optimizer, train_sampler, train_loader, criteri
             training_status_info['validation_elasped_time'] += time.time() - validation_timer_start
             acc1 = validate_info['top1_acc']
             acc5 = validate_info['top5_acc']
+
+            wandb.log(validate_info)
+
         else:
             acc1 = 0
             acc5 = 0
@@ -875,6 +879,13 @@ def main(opt, argv):
     logging.info('argv=\n' + str(argv))
     logging.info('opt=\n' + str(opt))
     logging.info('-----')
+
+    wandb.init(project='ZiCo', config=args, name=os.path.dirname(path) )
+
+    # Log SLURM & PBS variables too
+    for key in os.environ:
+        if key.startswith('SLURM') or key.startswith('PBS'):
+            wandb.config[key] = os.getenv(key)
 
     # load dataset
     tmp_opt = copy.copy(opt)
