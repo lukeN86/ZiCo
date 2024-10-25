@@ -282,6 +282,7 @@ def network_weight_xavier_init(net: nn.Module):
         elif isinstance(m, nn.Linear):
             nn.init.normal_(m.weight, 0, 3.26033 * np.sqrt(2 / (m.weight.shape[0] + m.weight.shape[1])))
             if hasattr(m, 'bias') and m.bias is not None:
+
                 nn.init.zeros_(m.bias)
         else:
             pass
@@ -881,7 +882,7 @@ def main(opt, argv):
     logging.info('opt=\n' + str(opt))
     logging.info('-----')
 
-    wandb.init(project='ZiCo', config=opt, name=os.path.dirname(path) )
+    wandb.init(project='ZiCo', config=opt, name=os.path.dirname(opt.save_dir) )
 
     # Log SLURM & PBS variables too
     for key in os.environ:
