@@ -876,6 +876,11 @@ def main(opt, argv):
         log_filename = os.path.join(opt.save_dir, 'train_image_classification.log')
         wandb.init(project='ZiCo', config=opt, name=os.path.split(opt.save_dir)[-1])
 
+        # Log SLURM & PBS variables too
+        for key in os.environ:
+            if key.startswith('SLURM') or key.startswith('PBS'):
+                wandb.config[key] = os.getenv(key)
+
         global_utils.create_logging(log_filename=log_filename)
     else:
         global_utils.create_logging(log_filename=None, level=logging.ERROR)
@@ -886,10 +891,6 @@ def main(opt, argv):
 
 
 
-    # Log SLURM & PBS variables too
-    for key in os.environ:
-        if key.startswith('SLURM') or key.startswith('PBS'):
-            wandb.config[key] = os.getenv(key)
 
     # load dataset
     tmp_opt = copy.copy(opt)
