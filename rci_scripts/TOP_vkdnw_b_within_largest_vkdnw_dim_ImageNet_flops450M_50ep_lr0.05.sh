@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=ZiCo450M
-#SBATCH --time=72:00:00
+#SBATCH --time=24:00:00
 #SBATCH --partition=amdgpulong
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:4
@@ -19,12 +19,12 @@ source activate zico
 export OMP_NUM_THREADS=14
 
 
-save_dir=./save_dir/TOP_vkdnw_b_within_largest_vkdnw_dim_ImageNet_flops450M_100ep_lr0.05
+save_dir=./save_dir/TOP_vkdnw_b_within_largest_vkdnw_dim_ImageNet_flops450M_50ep_lr0.05
 mkdir -p ${save_dir}
 
 
 resolution=224
-epochs=100
+epochs=50
 
 
 horovodrun -np 4 python ts_train_image_classification.py --dataset imagenet --num_classes 1000 \
@@ -44,7 +44,7 @@ horovodrun -np 4 python ts_train_image_classification.py --dataset imagenet --nu
   --ts_proj_no_bn \
   --use_se \
   --target_downsample_ratio 16 \
-  --batch_size_per_gpu 64 --save_dir ${save_dir}/ts_effnet_b3ns_epochs${epochs} \
+  --batch_size_per_gpu 64 --save_dir ${save_dir} \
   --world-size 1 \
   --dist_mode horovod
   
