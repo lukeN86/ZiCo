@@ -3,7 +3,7 @@
 #SBATCH --account OPEN-30-33
 #SBATCH --partition qdgx
 #SBATCH --nodes 1
-#SBATCH --ntasks-per-node 128
+#SBATCH --ntasks-per-node 64
 #SBATCH --time 24:00:00
 #SBATCH --output=/home/neumalu/jobs/zico_%j.out
 # -------------------------------
