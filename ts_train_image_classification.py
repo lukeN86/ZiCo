@@ -880,7 +880,7 @@ def main(opt, argv):
     logging.info('opt=\n' + str(opt))
     logging.info('-----')
 
-    wandb.init(project='ZiCo', config=args, name=os.path.dirname(path) )
+    wandb.init(project='ZiCo', config=opt, name=os.path.dirname(path) )
 
     # Log SLURM & PBS variables too
     for key in os.environ:
