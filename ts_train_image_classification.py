@@ -793,6 +793,9 @@ def train_all_epochs(opt, model, optimizer, train_sampler, train_loader, criteri
             acc1 = validate_info['top1_acc']
             acc5 = validate_info['top5_acc']
 
+            if opt.rank == 0:
+                wandb.log(validate_info)
+
         else:
             acc1 = 0
             acc5 = 0
@@ -832,7 +835,7 @@ def train_all_epochs(opt, model, optimizer, train_sampler, train_loader, criteri
                 'training_status_info': training_status_info
             })
 
-            wandb.log(validate_info)
+
 
         # ----- save best parameters -----#
         if save_params and is_best_acc1 and (opt.rank == 0 or save_all_ranks):
