@@ -793,8 +793,6 @@ def train_all_epochs(opt, model, optimizer, train_sampler, train_loader, criteri
             acc1 = validate_info['top1_acc']
             acc5 = validate_info['top5_acc']
 
-            wandb.log(validate_info)
-
         else:
             acc1 = 0
             acc5 = 0
@@ -833,6 +831,8 @@ def train_all_epochs(opt, model, optimizer, train_sampler, train_loader, criteri
                 'top5_acc': acc5,
                 'training_status_info': training_status_info
             })
+
+            wandb.log(validate_info)
 
         # ----- save best parameters -----#
         if save_params and is_best_acc1 and (opt.rank == 0 or save_all_ranks):
@@ -874,6 +874,8 @@ def main(opt, argv):
     # create log
     if opt.rank == 0:
         log_filename = os.path.join(opt.save_dir, 'train_image_classification.log')
+        wandb.init(project='ZiCo', config=opt, name=os.path.split(opt.save_dir)[-1])
+
         global_utils.create_logging(log_filename=log_filename)
     else:
         global_utils.create_logging(log_filename=None, level=logging.ERROR)
@@ -882,7 +884,7 @@ def main(opt, argv):
     logging.info('opt=\n' + str(opt))
     logging.info('-----')
 
-    wandb.init(project='ZiCo', config=opt, name=os.path.dirname(opt.save_dir) )
+
 
     # Log SLURM & PBS variables too
     for key in os.environ:
