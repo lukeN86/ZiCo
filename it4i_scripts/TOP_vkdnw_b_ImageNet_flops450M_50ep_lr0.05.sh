@@ -16,7 +16,7 @@ eval "$(/home/neumalu/anaconda3/bin/conda shell.bash hook)"
 conda activate zico
 export OMP_NUM_THREADS=14
 
-save_dir=./save_dir/TOP_vkdnw_b_ImageNet_flops450M_50ep_lr0.05
+save_dir=/mnt/proj2/open-30-33/zico/TOP_vkdnw_b_ImageNet_flops450M_50ep_lr0.05
 mkdir -p ${save_dir}
 
 resolution=224
