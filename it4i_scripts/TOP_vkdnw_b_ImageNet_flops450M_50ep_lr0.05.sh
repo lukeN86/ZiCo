@@ -16,7 +16,7 @@ eval "$(/home/neumalu/anaconda3/bin/conda shell.bash hook)"
 conda activate zico
 export OMP_NUM_THREADS=14
 
-save_dir=./save_dir/TOP_vkdnw_b_ImageNet_flops450M_50ep_lr0.01
+save_dir=./save_dir/TOP_vkdnw_b_ImageNet_flops450M_50ep_lr0.05
 mkdir -p ${save_dir}
 
 resolution=224
@@ -28,7 +28,7 @@ horovodrun -np 16 python ts_train_image_classification.py --dataset imagenet --n
   --input_image_size ${resolution} --epochs ${epochs} --warmup 5 \
   --optimizer sgd --bn_momentum 0.01 --wd 4e-5 --nesterov --weight_init custom \
   --label_smoothing --random_erase --mixup --auto_augment \
-  --lr_per_256 0.01 --target_lr_per_256 0.0 --lr_mode cosine \
+  --lr_per_256 0.05 --target_lr_per_256 0.0 --lr_mode cosine \
   --arch Masternet.py:MasterNet \
   --plainnet_struct_txt ZiCo/TOP_vkdnw_b.txt \
   --teacher_arch geffnet_tf_efficientnet_b3_ns \
