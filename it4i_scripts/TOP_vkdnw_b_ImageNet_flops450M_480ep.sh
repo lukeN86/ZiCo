@@ -4,7 +4,7 @@
 #SBATCH --partition qdgx
 #SBATCH --nodes 1
 #SBATCH --ntasks-per-node 64
-#SBATCH --time 24:00:00
+#SBATCH --time 48:00:00
 #SBATCH --output=/home/neumalu/jobs/zico_%j.out
 # -------------------------------
 ml GCC/10.3.0
