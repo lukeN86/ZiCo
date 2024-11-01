@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name ZiCo450M
+#SBATCH --job-name VKDNW_EVOLUTION_FLOPS520M_LAYERS17_PARAMS_RANDOM
 #SBATCH --account FTA-24-40
 #SBATCH --partition qgpu
 #SBATCH --nodes 1
