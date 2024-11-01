@@ -21,7 +21,7 @@ resolution=224
 epochs=50
 
 
-horovodrun -np 16 python ts_train_image_classification.py --dataset imagenet --num_classes 1000 \
+horovodrun -np 8 python ts_train_image_classification.py --dataset imagenet --num_classes 1000 \
   --dist_mode single --workers_per_gpu 8 \
   --input_image_size ${resolution} --epochs ${epochs} --warmup 5 \
   --optimizer sgd --bn_momentum 0.01 --wd 4e-5 --nesterov --weight_init custom \
