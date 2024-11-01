@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=ZiCo1G
-#SBATCH --time=96:00:00
+#SBATCH --time=72:00:00
 #SBATCH --partition=amdgpulong
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:4
