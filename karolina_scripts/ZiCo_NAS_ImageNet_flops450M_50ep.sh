@@ -5,6 +5,8 @@
 #SBATCH --nodes 1
 #SBATCH --gpus 8
 #SBATCH --time 24:00:00
+#SBATCH --ntasks-per-node=8
+#SBATCH --cpus-per-task=16
 #SBATCH --output=/home/neumalu/jobs/zico_%j.out
 # -------------------------------
 ml fosscuda/2020b
@@ -12,7 +14,6 @@ ml Anaconda3
 
 
 source activate /mnt/proj2/open-30-33/conda/zico
-export OMP_NUM_THREADS=14
 
 save_dir=/mnt/proj2/open-30-33/zico_karolina/ZiCo_NAS_ImageNet_flops450M_50ep
 mkdir -p ${save_dir}
