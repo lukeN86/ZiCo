@@ -3,6 +3,8 @@
 #SBATCH --account FTA-24-40
 #SBATCH --partition qgpu
 #SBATCH --nodes 1
+#SBATCH --ntasks-per-node=8
+#SBATCH --cpus-per-task=16
 #SBATCH --gpus 8
 #SBATCH --time 24:00:00
 #SBATCH --output=/home/neumalu/jobs/zico_%j.out
@@ -12,7 +14,7 @@ ml Anaconda3
 
 
 source activate /mnt/proj2/open-30-33/conda/zico
-export OMP_NUM_THREADS=14
+
 
 save_dir=/mnt/proj2/open-30-33/zico_karolina/VKDNW_EVOLUTION_FLOPS520M_LAYERS17_PARAMS_RANDOM_FIXED_50ep
 mkdir -p ${save_dir}
@@ -40,7 +42,8 @@ horovodrun -np 8 python ts_train_image_classification.py --dataset imagenet --nu
   --target_downsample_ratio 16 \
   --batch_size_per_gpu 64 --save_dir ${save_dir} \
   --world-size 1 \
-  --dist_mode horovod
+  --dist_mode horovod \
+  --auto_resume
   
 
 
