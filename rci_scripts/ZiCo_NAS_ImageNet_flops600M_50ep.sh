@@ -19,7 +19,7 @@ source activate zico
 export OMP_NUM_THREADS=14
 
 
-save_dir=./save_dir/ZiCo_NAS_ImageNet_flops450M_50ep
+save_dir=./save_dir/ZiCo_NAS_ImageNet_flops600M_50ep
 mkdir -p ${save_dir}
 
 
