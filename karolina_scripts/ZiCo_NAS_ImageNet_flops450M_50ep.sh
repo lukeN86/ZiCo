@@ -15,7 +15,7 @@ ml Anaconda3
 
 source activate /mnt/proj2/open-30-33/conda/zico
 
-save_dir=/mnt/proj2/open-30-33/zico_karolina/ZiCo_NAS_ImageNet_flops450M_50ep
+save_dir=/mnt/proj2/open-30-33/zico_karolina/ZiCo_NAS_ImageNet_flops450M_50ep_run2
 mkdir -p ${save_dir}
 
 resolution=224
