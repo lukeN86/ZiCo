@@ -26,6 +26,7 @@ except ImportError:
 import ModelLoader, DataLoader
 import global_utils
 import wandb
+import json
 import os
 
 def ts_feature_map_loss(x,y):
@@ -877,7 +878,21 @@ def main(opt, argv):
     # create log
     if opt.rank == 0:
         log_filename = os.path.join(opt.save_dir, 'train_image_classification.log')
-        wandb.init(project='ZiCo', config=opt, name=os.path.split(opt.save_dir)[-1])
+
+        wandb_filename = os.path.join(opt.save_dir, 'wandb.json')
+
+        if os.path.exists(wandb_filename):
+            #Resuming run
+            with open(wandb_filename, 'r') as f:
+                wandb_state = json.load(f)
+
+            wandb.init(project='ZiCo', config=opt, name=os.path.split(opt.save_dir)[-1], id=wandb_state['runid'], resume='must')
+        else:
+            # New run
+            wandb.init(project='ZiCo', config=opt, name=os.path.split(opt.save_dir)[-1])
+
+            with open(wandb_filename, "w") as f:
+                json.dump({'runid': wandb.run.id}, f)
 
         # Log SLURM & PBS variables too
         for key in os.environ:
