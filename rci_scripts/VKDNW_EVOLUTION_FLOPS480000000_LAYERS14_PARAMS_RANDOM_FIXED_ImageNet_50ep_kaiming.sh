@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --job-name=VKDNW_EVOLUTION_FLOPS480000000_LAYERS14_PARAMS_RANDOM_FIXED
 #SBATCH --time=24:00:00
-#SBATCH --partition=amdgpu
+#SBATCH --partition=amdgpulong
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:4
 #SBATCH --mem=128gb
 #SBATCH --ntasks-per-node=4
-#SBATCH --cpus-per-task=14
+#SBATCH --cpus-per-task=12
 #SBATCH --output=/home/neumalu1/data/zico/zico_%j.out
 # -------------------------------
 
