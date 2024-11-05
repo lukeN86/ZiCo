@@ -150,7 +150,14 @@ class TeacherStudentDistillNet(nn.Module):
         for block in self.proj_conv_list:
             network_weight_zero_init(block)
         if hasattr(self.student_model, 'init_parameters'):
-            self.student_model.init_parameters()
+            if hasattr(opt, 'weight_init') and opt.weight_init == 'custom':
+                self.student_model.init_parameters()
+            elif hasattr(opt, 'weight_init') and opt.weight_init == 'custom_kaiming':
+                self.student_model.init_parameters(method='kaiming')
+            elif hasattr(opt, 'weight_init') and opt.weight_init == 'custom_xavier':
+                self.student_model.init_parameters(method='xavier')
+            else:
+                raise NotImplementedError
         else:
             print('Warning!!! student model has no init_parameters()!')
 
@@ -457,6 +464,12 @@ def init_model(model, opt, argv):
             logging.info('Warning! No init_parameters found')
         else:
             model.init_parameters()
+    elif hasattr(opt, 'weight_init') and opt.weight_init == 'custom_kaiming':
+        assert hasattr(model, 'init_parameters')
+        model.init_parameters(method='kaiming')
+    elif hasattr(opt, 'weight_init') and opt.weight_init == 'custom_xavier':
+        assert hasattr(model, 'init_parameters')
+        model.init_parameters(method='xavier')
     elif hasattr(opt, 'weight_init') and opt.weight_init == 'None':
         logging.info('Warning!!! model loaded without initialization !')
     else:

@@ -86,6 +86,7 @@ class MasterNet(PlainNet.PlainNet):
 
     def forward(self, x):
         output = x
+
         for block_id, the_block in enumerate(self.block_list):
             output = the_block(output)
 
@@ -148,17 +149,33 @@ class MasterNet(PlainNet.PlainNet):
             new_str += block.split(split_layer_threshold=split_layer_threshold)
         return new_str
 
-    def init_parameters(self):
+    def init_parameters(self, method=None):
+        if method=='kaiming':
+            print("Use kaiming init")
+        elif method=='xavier':
+            print("Use xavier init")
+        else:
+            print("Use custom init")
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
-                nn.init.xavier_normal_(m.weight.data, gain=3.26033)
+                if method=='kaiming':
+                    nn.init.kaiming_normal_(m.weight, mode='fan_in', nonlinearity='relu')
+                elif method=='xavier':
+                    nn.init.xavier_uniform_(m.weight)
+                else:
+                    nn.init.xavier_normal_(m.weight.data, gain=3.26033)
                 if hasattr(m, 'bias') and m.bias is not None:
                     nn.init.zeros_(m.bias)
             elif isinstance(m, (nn.BatchNorm2d, nn.GroupNorm)):
                 nn.init.ones_(m.weight)
                 nn.init.zeros_(m.bias)
             elif isinstance(m, nn.Linear):
-                nn.init.normal_(m.weight, 0, 3.26033 * np.sqrt(2 / (m.weight.shape[0] + m.weight.shape[1])))
+                if method=='kaiming':
+                    nn.init.kaiming_normal_(m.weight, mode='fan_in', nonlinearity='relu')
+                elif method=='xavier':
+                    nn.init.xavier_uniform_(m.weight)
+                else:
+                    nn.init.normal_(m.weight, 0, 3.26033 * np.sqrt(2 / (m.weight.shape[0] + m.weight.shape[1])))
                 if hasattr(m, 'bias') and m.bias is not None:
                     nn.init.zeros_(m.bias)
             else:
