@@ -6,7 +6,7 @@
 #SBATCH --ntasks-per-node=8
 #SBATCH --cpus-per-task=16
 #SBATCH --gpus 8
-#SBATCH --time 24:00:00
+#SBATCH --time 48:00:00
 #SBATCH --output=/home/neumalu/jobs/zico_%j.out
 # -------------------------------
 ml fosscuda/2020b
