@@ -16,7 +16,7 @@ ml Anaconda3
 source activate /mnt/proj2/open-30-33/conda/zico
 
 
-save_dir=/mnt/proj2/open-30-33/zico_karolina/VKDNW_EVOLUTION_FLOPS_1050M_14L_480ep
+save_dir=/mnt/proj2/open-30-33/zico_karolina/VKDNW_EVOLUTION_FLOPS_1050M_14L_480ep_kaiming
 mkdir -p ${save_dir}
 
 resolution=224
