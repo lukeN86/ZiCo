@@ -13,7 +13,7 @@
 ml fosscuda
 ml CMake/3.18.4-GCCcore-10.2.0
 ml Anaconda3
-ml purge
+
 
 
 source activate zico
