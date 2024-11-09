@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name TOP_vkdnw_entropy_flops480M_layers14_2_kaiming_b4
-#SBATCH --account FTA-24-40
+#SBATCH --account OPEN-30-33
 #SBATCH --partition qgpu_free
 #SBATCH --nodes 1
 #SBATCH --ntasks-per-node=8
