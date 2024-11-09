@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name VKDNW_EVOLUTION_FLOPS_1050M_14L_480ep_kaiming_b5
+#SBATCH --job-name VKDNW_EVOLUTION_FLOPS_1050M_14L_480ep_kaiming_b4
 #SBATCH --account OPEN-30-33
 #SBATCH --partition qdgx
 #SBATCH --nodes 1
@@ -16,7 +16,7 @@ eval "$(/home/neumalu/anaconda3/bin/conda shell.bash hook)"
 conda activate zico
 export OMP_NUM_THREADS=14
 
-save_dir=/mnt/proj2/open-30-33/zico/VKDNW_EVOLUTION_FLOPS_1050M_14L_480ep_kaiming_b5
+save_dir=/mnt/proj2/open-30-33/zico/VKDNW_EVOLUTION_FLOPS_1050M_14L_480ep_kaiming_b4
 mkdir -p ${save_dir}
 
 resolution=224
