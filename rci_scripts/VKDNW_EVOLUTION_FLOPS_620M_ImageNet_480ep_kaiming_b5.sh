@@ -35,9 +35,9 @@ horovodrun -np 8 python ts_train_image_classification.py --dataset imagenet --nu
   --lr_per_256 0.1 --target_lr_per_256 0.0 --lr_mode cosine \
   --arch Masternet.py:MasterNet \
   --plainnet_struct_txt ZiCo/VKDNW_EVOLUTION_FLOPS_620M.txt \
-  --teacher_arch geffnet_tf_efficientnet_b5_ns \
+  --teacher_arch geffnet_tf_efficientnet_b4_ns \
   --teacher_pretrained \
-  --teacher_input_image_size 320 \
+  --teacher_input_image_size 380 \
   --teacher_feature_weight 1.0 \
   --teacher_logit_weight 1.0 \
   --ts_proj_no_relu \
