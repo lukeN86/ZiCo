@@ -6,7 +6,7 @@
 #SBATCH --gres=gpu:4
 #SBATCH --mem=128gb
 #SBATCH --ntasks-per-node=4
-#SBATCH --cpus-per-task=12
+#SBATCH --cpus-per-task=10
 #SBATCH --output=/home/neumalu1/data/zico/zico_%j.out
 # -------------------------------
 
@@ -17,7 +17,7 @@ ml purge
 
 
 source activate zico
-export OMP_NUM_THREADS=14
+export OMP_NUM_THREADS=10
 
 
 save_dir=./save_dir/TOP_vkdnw_entropy_flops480M_layers14_2_480ep_kaiming_b4
