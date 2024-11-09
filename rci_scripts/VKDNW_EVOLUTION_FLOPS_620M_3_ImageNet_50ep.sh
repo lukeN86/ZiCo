@@ -19,7 +19,7 @@ source activate zico
 export OMP_NUM_THREADS=14
 
 
-save_dir=./save_dir/VKDNW_EVOLUTION_FLOPS_620M_3_ImageNet_50ep
+save_dir=./save_dir/VKDNW_EVOLUTION_FLOPS_620M_3_ImageNet_50ep_b3
 mkdir -p ${save_dir}
 
 
@@ -35,7 +35,7 @@ horovodrun -np 4 python ts_train_image_classification.py --dataset imagenet --nu
   --lr_per_256 0.1 --target_lr_per_256 0.0 --lr_mode cosine \
   --arch Masternet.py:MasterNet \
   --plainnet_struct_txt ZiCo/VKDNW_EVOLUTION_FLOPS_620M_3.txt \
-  --teacher_arch geffnet_tf_efficientnet_b5_ns \
+  --teacher_arch geffnet_tf_efficientnet_b3_ns \
   --teacher_pretrained \
   --teacher_input_image_size 320 \
   --teacher_feature_weight 1.0 \
