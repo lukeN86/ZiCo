@@ -42,7 +42,7 @@ for i in ${!nodes[@]}; do
 done
 
 
-horovodrun -np $SLURM_NTASKS --mpi -H $NODES python ts_train_image_classification.py --dataset imagenet --num_classes 1000 \
+horovodrun -np $SLURM_NTASKS -H $NODES python ts_train_image_classification.py --dataset imagenet --num_classes 1000 \
   --dist_mode single --workers_per_gpu 8 \
   --input_image_size ${resolution} --epochs ${epochs} --warmup 5 \
   --optimizer sgd --bn_momentum 0.01 --wd 4e-5 --nesterov --weight_init custom_kaiming \
@@ -61,7 +61,7 @@ horovodrun -np $SLURM_NTASKS --mpi -H $NODES python ts_train_image_classificatio
   --target_downsample_ratio 16 \
   --batch_size_per_gpu 64 --save_dir ${save_dir} \
   --world-size 2 \
-  --dist_mode mpi \
+  --dist_mode horovod \
   --auto_resume
   
 
