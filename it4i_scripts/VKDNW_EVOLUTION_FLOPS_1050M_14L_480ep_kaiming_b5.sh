@@ -33,7 +33,7 @@ horovodrun -np 16 python ts_train_image_classification.py --dataset imagenet --n
   --plainnet_struct_txt ZiCo/VKDNW_EVOLUTION_FLOPS_1050M_14L.txt \
   --teacher_arch geffnet_tf_efficientnet_b5_ns \
   --teacher_pretrained \
-  --teacher_input_image_size 320 \
+  --teacher_input_image_size 456 \
   --teacher_feature_weight 1.0 \
   --teacher_logit_weight 1.0 \
   --ts_proj_no_relu \
