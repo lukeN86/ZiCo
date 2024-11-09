@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=VKDNW_EVOLUTION_FLOPS_620M
-#SBATCH --time=196:00:00
-#SBATCH --partition=amdgpuextralong
+#SBATCH --time=72:00:00
+#SBATCH --partition=amdgpulong
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:8
 #SBATCH --mem=128gb
