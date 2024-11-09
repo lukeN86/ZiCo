@@ -3,7 +3,7 @@
 #SBATCH --time=196:00:00
 #SBATCH --partition=amdgpuextralong
 #SBATCH --nodes=1
-#SBATCH --gres=gpu:4
+#SBATCH --gres=gpu:8
 #SBATCH --mem=128gb
 #SBATCH --ntasks-per-node=4
 #SBATCH --cpus-per-task=12
@@ -27,7 +27,7 @@ resolution=224
 epochs=480
 
 
-horovodrun -np 4 python ts_train_image_classification.py --dataset imagenet --num_classes 1000 \
+horovodrun -np 8 python ts_train_image_classification.py --dataset imagenet --num_classes 1000 \
   --dist_mode single --workers_per_gpu 8 \
   --input_image_size ${resolution} --epochs ${epochs} --warmup 5 \
   --optimizer sgd --bn_momentum 0.01 --wd 4e-5 --nesterov --weight_init custom_kaiming \
