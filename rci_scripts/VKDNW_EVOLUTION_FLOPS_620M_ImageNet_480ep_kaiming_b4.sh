@@ -19,7 +19,7 @@ source activate zico
 export OMP_NUM_THREADS=14
 
 
-save_dir=./save_dir/VKDNW_EVOLUTION_FLOPS_620M_ImageNet_480ep_kaiming_b5
+save_dir=./save_dir/VKDNW_EVOLUTION_FLOPS_620M_ImageNet_480ep_kaiming_b4
 mkdir -p ${save_dir}
 
 
