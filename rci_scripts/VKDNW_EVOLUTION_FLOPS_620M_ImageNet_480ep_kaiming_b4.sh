@@ -24,7 +24,7 @@ mkdir -p ${save_dir}
 
 
 resolution=224
-epochs=480
+epochs=250
 
 
 horovodrun -np 8 python ts_train_image_classification.py --dataset imagenet --num_classes 1000 \
