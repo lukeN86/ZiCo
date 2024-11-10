@@ -16,11 +16,11 @@ ml Anaconda3
 source activate /mnt/proj2/open-30-33/conda/zico
 
 
-save_dir=/mnt/proj2/open-30-33/zico_karolina/TOP_vkdnw_entropy_flops480M_layers14_2_kaiming_b4
+save_dir=/mnt/proj2/open-30-33/zico_karolina/TOP_vkdnw_entropy_flops480M_layers14_2_250ep_kaiming_b4
 mkdir -p ${save_dir}
 
 resolution=224
-epochs=50
+epochs=250
 
 
 horovodrun -np 8 python ts_train_image_classification.py --dataset imagenet --num_classes 1000 \
