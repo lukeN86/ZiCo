@@ -20,7 +20,7 @@ save_dir=/mnt/proj2/open-30-33/zico/VKDNW_EVOLUTION_FLOPS_1050M_14L_480ep_kaimin
 mkdir -p ${save_dir}
 
 resolution=224
-epochs=480
+epochs=250
 
 
 horovodrun -np 16 python ts_train_image_classification.py --dataset imagenet --num_classes 1000 \
