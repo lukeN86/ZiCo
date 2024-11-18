@@ -42,7 +42,8 @@ horovodrun -np 16 python ts_train_image_classification.py --dataset imagenet --n
   --target_downsample_ratio 16 \
   --batch_size_per_gpu 64 --save_dir ${save_dir} \
   --world-size 1 \
-  --dist_mode horovod
+  --dist_mode horovod \
+  --auto_resume
   
 
 
