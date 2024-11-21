@@ -4,7 +4,7 @@
 #SBATCH --partition qdgx
 #SBATCH --nodes 1
 #SBATCH --ntasks-per-node 64
-#SBATCH --time 24:00:00
+#SBATCH --time 48:00:00
 #SBATCH --output=/home/neumalu/jobs/zico_%j.out
 # -------------------------------
 ml GCC/10.3.0
@@ -16,7 +16,7 @@ eval "$(/home/neumalu/anaconda3/bin/conda shell.bash hook)"
 conda activate zico
 export OMP_NUM_THREADS=14
 
-save_dir=/mnt/proj2/open-30-33/zico/ZiCo_NAS_ImageNet_flops450M_150ep
+save_dir=/mnt/proj2/open-30-33/zico/ZiCo_NAS_ImageNet_flops600M_150ep
 mkdir -p ${save_dir}
 
 resolution=224
