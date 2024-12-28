@@ -907,10 +907,10 @@ def main(opt, argv):
             with open(wandb_filename, "w") as f:
                 json.dump({'runid': wandb.run.id}, f)
 
-        # Log SLURM & PBS variables too
-        for key in os.environ:
-            if key.startswith('SLURM') or key.startswith('PBS'):
-                wandb.config[key] = os.getenv(key)
+            # Log SLURM & PBS variables too
+            for key in os.environ:
+                if key.startswith('SLURM') or key.startswith('PBS'):
+                    wandb.config[key] = os.getenv(key)
 
         global_utils.create_logging(log_filename=log_filename)
     else:
