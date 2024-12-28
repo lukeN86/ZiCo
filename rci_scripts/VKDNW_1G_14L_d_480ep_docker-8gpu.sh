@@ -12,7 +12,7 @@
 
 
 
-save_dir=./save_dir/ZiCo_NAS_ImageNet_flops1G_480ep_docker_8gpu
+save_dir=./save_dir/VKDNW_1G_14L_d_480ep_docker_8gpu
 mkdir -p ${save_dir}
 
 
