@@ -38,7 +38,7 @@ params_dict = {
     },
    'hf_imagenet': {
         'train_dir': os.path.expanduser('~/data/imagenet/train/'),
-        'val_dir': os.path.expanduser('~/data/imagenet/train/'),
+        'val_dir': os.path.expanduser('~/data/imagenet/val/'),
         'num_train_samples': 1281167,
         'num_val_samples': 50000,
         'num_classes': 1000,
