@@ -36,6 +36,13 @@ params_dict = {
         'num_val_samples': 50000,
         'num_classes': 1000,
     },
+   'hf_imagenet': {
+        'train_dir': os.path.expanduser('~/data/imagenet/train/'),
+        'val_dir': os.path.expanduser('~/data/imagenet/train/'),
+        'num_train_samples': 1281167,
+        'num_val_samples': 50000,
+        'num_classes': 1000,
+    },
     'myimagenet100': {
         'train_dir': os.path.expanduser('~/data/myimagenet100/train/'),
         'val_dir': os.path.expanduser('~/data/myimagenet100/val/'),
@@ -226,7 +233,7 @@ def _get_data_(dataset_name=None, set_name=None, batch_size=None, train_augment=
              input_image_size=224, input_image_crop=0.875, rank=0, world_size=1, shuffle=False,
              num_workers=6, drop_last=False, dataset_ImageFolderClass=None, dataloader_testing=False, argv=None):
 
-    if dataset_name in ['imagenet', 'myimagenet100']:
+    if dataset_name in ['imagenet', 'myimagenet100', 'hf_imagenet']:
         dataset_params = params_dict[dataset_name]
         data_dir = dataset_params['train_dir'] if set_name == 'train' else dataset_params['val_dir']
 
