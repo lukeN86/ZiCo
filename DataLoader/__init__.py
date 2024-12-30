@@ -43,6 +43,13 @@ params_dict = {
         'num_val_samples': 50000,
         'num_classes': 1000,
     },
+    'imagenet_obf': {
+        'train_dir': os.path.expanduser('~/data/imagenet_obf/train/'),
+        'val_dir': os.path.expanduser('~/data/imagenet_obf/val/'),
+        'num_train_samples': 1281167,
+        'num_val_samples': 50000,
+        'num_classes': 1000,
+    },
     'myimagenet100': {
         'train_dir': os.path.expanduser('~/data/myimagenet100/train/'),
         'val_dir': os.path.expanduser('~/data/myimagenet100/val/'),
