@@ -20,7 +20,7 @@ resolution=224
 epochs=480
 
 
-singularity exec --nv --bind /mnt:/mnt docker://luken86/aznas horovodrun -np 8 python ts_train_image_classification.py --dataset imagenet_obf --num_classes 1000 \
+singularity exec --nv --bind /mnt:/mnt docker://luken86/aznas horovodrun -np 4 python ts_train_image_classification.py --dataset imagenet_obf --num_classes 1000 \
   --dist_mode single --workers_per_gpu 8 \
   --input_image_size ${resolution} --epochs ${epochs} --warmup 5 \
   --optimizer sgd --bn_momentum 0.01 --wd 4e-5 --nesterov --weight_init custom \
