@@ -240,7 +240,7 @@ def _get_data_(dataset_name=None, set_name=None, batch_size=None, train_augment=
              input_image_size=224, input_image_crop=0.875, rank=0, world_size=1, shuffle=False,
              num_workers=6, drop_last=False, dataset_ImageFolderClass=None, dataloader_testing=False, argv=None):
 
-    if dataset_name in ['imagenet', 'myimagenet100', 'hf_imagenet']:
+    if dataset_name in ['imagenet', 'myimagenet100', 'hf_imagenet', 'imagenet_obf']:
         dataset_params = params_dict[dataset_name]
         data_dir = dataset_params['train_dir'] if set_name == 'train' else dataset_params['val_dir']
 
