@@ -19,7 +19,7 @@ source activate zico
 export OMP_NUM_THREADS=14
 
 
-save_dir=./save_dir/ZiCo_NAS_ImageNet_flops1G_480ep
+save_dir=./save_dir/ZiCo_NAS_ImageNet_flops1G_480ep_ws8
 mkdir -p ${save_dir}
 
 
@@ -45,7 +45,7 @@ horovodrun -np 8 python ts_train_image_classification.py --dataset imagenet --nu
   --use_se \
   --target_downsample_ratio 16 \
   --batch_size_per_gpu 64 --save_dir ${save_dir} \
-  --world-size 1 \
+  --world-size 8 \
   --dist_mode horovod
   
 
