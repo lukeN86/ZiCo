@@ -12,7 +12,7 @@
 
 
 
-save_dir=./save_dir/ZiCo_NAS_ImageNet_flops1G_480ep_docker_4gpu
+save_dir=./save_dir/ZiCo_NAS_ImageNet_flops1G_480ep_docker_4gpu_ws4
 mkdir -p ${save_dir}
 
 
@@ -38,7 +38,7 @@ singularity exec --nv --bind /mnt:/mnt docker://luken86/aznas horovodrun -np 4 p
   --use_se \
   --target_downsample_ratio 16 \
   --batch_size_per_gpu 64 --save_dir ${save_dir} \
-  --world-size 1 \
+  --world-size 4 \
   --dist_mode horovod \
   --auto_resume
   
