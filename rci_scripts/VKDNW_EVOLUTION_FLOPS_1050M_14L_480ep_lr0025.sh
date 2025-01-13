@@ -19,7 +19,7 @@ source activate zico
 export OMP_NUM_THREADS=14
 
 
-save_dir=./save_dir/VKDNW_EVOLUTION_FLOPS_1050M_14L_480ep_lr005
+save_dir=./save_dir/VKDNW_EVOLUTION_FLOPS_1050M_14L_480ep_lr0025
 mkdir -p ${save_dir}
 
 
