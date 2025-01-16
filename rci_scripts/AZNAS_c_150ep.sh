@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=VKDNW_EVOLUTION_FLOPS_1050M_14L
+#SBATCH --job-name=AZNAS_c
 #SBATCH --time=196:00:00
 #SBATCH --partition=amdgpuextralong
 #SBATCH --nodes=1
@@ -19,7 +19,7 @@ source activate zico
 export OMP_NUM_THREADS=14
 
 
-save_dir=./save_dir/VKDNW_EVOLUTION_FLOPS_1050M_14L_480ep_lr005
+save_dir=./save_dir/AZNAS_c_150ep
 mkdir -p ${save_dir}
 
 
